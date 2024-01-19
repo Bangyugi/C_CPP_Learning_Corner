@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "Hello_world.C": "cpp",
+        "new": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
