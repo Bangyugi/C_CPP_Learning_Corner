@@ -15,8 +15,22 @@ struct Car
         cin >> id;
         cout << "Enter maximum capacity: ";
         cin >> maximumCapacity;
-        cout << "Number of passengers in car: ";
+        cout << "Enter number of passengers in car: ";
         cin >> numberOfPassenger;
+        // Tớ cho luôn number of passenger vào đây để tiện cho việc truy xuất và kiểm tra
+        // Cho chắc cú tớ bắt lỗi numberOfPassenger > maximumCapacity
+        while (true)
+        {
+            if (numberOfPassenger > maximumCapacity)
+            {
+                cout << "Number of passenger should be less than maximum capacity.\nEnter again: ";
+                cin >> numberOfPassenger;
+            }
+            else
+            {
+                break;
+            }
+        }
     }
     void output()
     {
@@ -53,15 +67,21 @@ void push_font(node *&head, Car x)
 
 void removeEmpty(node *&head)
 {
-
+    // Tớ kiểm tra nếu phần tử đầu tiên có số hành khách == 0 thì xóa. 
+    // Note: Tớ dùng while để xóa đến khi phần tử head là null hoặc !=0
     while (head != NULL && head->data.numberOfPassenger == 0)
     {
         node *eraseNode = head;
         head = head->next;
         delete eraseNode;
     }
+
+    // Sau khi xử lý trường hợp phần tử đầu == 0 thì có 2 trường hợp xảy ra 1 là head == NULL và head != NULL
+    // Head == NULL -> return
     if (head == NULL)
         return;
+
+    //  Trường hợp head != NULL thì thực hiện hàm xóa như tớ code dưới đây
     node *temp = head;
     while (temp->next != NULL)
     {
@@ -89,6 +109,7 @@ int length(node *head)
     }
     return result;
 }
+
 void display(node *head)
 {
     node *temp = head;
@@ -123,10 +144,12 @@ int main()
             Car car;
             car.input();
             push_font(head, car);
+            break;
         }
         case 2:
         {
             removeEmpty(head);
+            break;
         }
         case 3:
         {
