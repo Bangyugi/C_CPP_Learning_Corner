@@ -105,13 +105,13 @@ int main()
     node *head = NULL;
     while (true)
     {
-        cout << "-----------------------------------------------\n";
+        cout << "----------------------------------------------\n";
         cout << "1. Add more car to the railroad train\n";
         cout << "2. Remove all empty cars in the railroad train\n";
         cout << "3. Display all cars of the railroad train\n";
         cout << "4. Display length of the railroad train\n";
         cout << "0. Exit\n";
-        cout << "-----------------------------------------------\n";
+        cout << "----------------------------------------------\n";
         cout << "Enter your choice: ";
         int choice;
         cin >> choice;
@@ -159,6 +159,22 @@ int main()
 // C0003
 // 20
 // 17
+// C0002
+// 20
+// 0
+// C0001
+// 20
+// 0
+
+// C0005
+// 20
+// 0
+// C0004
+// 20
+// 0
+// C0003
+// 20
+// 0
 // C0002
 // 20
 // 0
