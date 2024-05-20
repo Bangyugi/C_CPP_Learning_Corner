@@ -15,6 +15,8 @@ bool isPrime(long long n)
 
 long long bacCuaThuaSoNguyenTo(long long n, long long p)
 {
+
+    // Công thức Legendre
     long long res = 0;
     for (long long i = p; i <= n; i *= p)
     {
@@ -22,6 +24,14 @@ long long bacCuaThuaSoNguyenTo(long long n, long long p)
         res %= MOD;
     }
     return res;
+
+    // long long res = 0;
+    // while (n>=p)
+    // {
+    //     res += n / p;
+    //     n /= p;
+    // }
+    // return res;
 }
 
 void runCase()
