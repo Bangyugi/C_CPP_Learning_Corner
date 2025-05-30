@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ii pair<int, int>
+using namespace std;
+ll MOD = 1e9 + 7;
+
+int main()
+{
+    // ios_base::sync_with_stdio(NULL);
+    // cin.tie(0);
+    // cout.tie(0);
+    vector<int> number = {10, 9, 2, 5, 3, 7, 101, 6};
+    int n = number.size();
+    vector<int> dp(n, 1);
+    int max_val = 1;
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = 1; j < n; j++)
+        {
+            if (number[i] > number[j])
+            {
+                if (dp[i] <= dp[j])
+                {
+                    dp[i] = dp[j] + 1;
+                    max_val = max(max_val, dp[i]);
+                }
+            }
+        }
+    }
+
+    for (auto x : dp)
+    {
+        cout << x << " ";
+    }
+    cout << endl;
+    cout << max_val << endl;
+    return 0;
+}
