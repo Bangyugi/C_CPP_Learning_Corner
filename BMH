@@ -1,0 +1,82 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ii pair<int, int>
+using namespace std;
+ll MOD = 1e9 + 7;
+
+map<char, int> shiftTable(string &t)
+{
+    map<char, int> map;
+    int m = t.size();
+    for (int i = 0; i < 256; i++)
+    {
+        map[i] = m;
+    }
+
+    for (int i = 0; i < m - 1; i++)
+    {
+        map[t[i]] = m - 1 - i;
+    }
+    return map;
+}
+
+int BMH(string &s, string &t)
+{
+    int n = s.length();
+    int m = t.length();
+
+    if (m == 0)
+        return 0;
+    if (n < m)
+        return -1;
+
+    map<char, int> map = shiftTable(t);
+
+    int i = 0;
+    while (i <= n - m)
+    {
+        int j = m - 1;
+        while (j >= 0 && t[j] == s[i + j])
+        {
+            j--;
+        }
+        if (j < 0)
+        {
+            return i;
+        }
+        else
+        {
+            char c = s[i + m - 1];
+            if (map.count(c))
+            {
+                i += map[c];
+            }
+            else
+            {
+                i += m;
+            }
+        }
+    }
+    return -1;
+}
+
+int main()
+{
+    // ios_base::sync_with_stdio(NULL);
+    // cin.tie(0);
+    // cout.tie(0);
+    string s = "Tran Van Bang dep trai";
+    string t = "Bang";
+
+    int index = BMH(s, t);
+
+    if (index != -1)
+    {
+        cout << "YES | " << index;
+    }
+    else
+    {
+        cout << "NO | ";
+    }
+    return 0;
+}
