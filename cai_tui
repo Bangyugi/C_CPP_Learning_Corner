@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ii pair<int, int>
+using namespace std;
+ll MOD = 1e9 + 7;
+
+int main()
+{
+    // ios_base::sync_with_stdio(NULL);
+    // cin.tie(0);
+    // cout.tie(0);
+    int s = 6;
+    vector<int> w = {2, 1, 4, 3};
+    vector<int> v = {3, 3, 4, 2};
+    int n = w.size();
+    vector<vector<int>> dp(n + 1, vector<int>(s + 1, 0));
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= s; j++)
+        {
+            dp[i][j] = dp[i - 1][j];
+            if (j >= w[i - 1])
+            {
+                dp[i][j] = max(dp[i][j], dp[i - 1][j - w[i - 1]] + v[i - 1]);
+            }
+        }
+    }
+
+    for (int i = 0; i <= n; i++)
+    {
+        for (int j = 0; j <= s; j++)
+        {
+            cout << dp[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    cout << dp[s][n];
+    return 0;
+}
